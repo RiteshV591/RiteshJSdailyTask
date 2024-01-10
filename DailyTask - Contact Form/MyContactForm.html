@@ -10,6 +10,8 @@
   </head>
   <body>
     <header class="header">
+
+      <!-- Navigation bar -->
       <nav class="navbar">
         <img src="src/logo-new.png" alt="logo" class="navbar_logo" id="logo" />
         <ul class="navbar_links">
@@ -25,6 +27,7 @@
         </ul>
       </nav>
 
+      <!-- Main information container -->
       <div class="main-container">
         <div class="personal-info">
           <div class="container-header">
@@ -34,80 +37,95 @@
           <div class="personal-info-body">
             <div class="info-item">
               <h2>Full Name</h2>
-              <p>ade</p>
+              <p class="displayName"></p>
             </div>
             <div class="info-item">
               <h2>Email</h2>
-              <p></p>
+              <p class="displayEmail"></p>
             </div>
             <div class="info-item">
               <h2>Phone</h2>
-              <p></p>
+              <p class="displayPhone"></p>
             </div>
             <div class="info-item">
               <h2>Needed Service</h2>
-              <p></p>
+              <p class="displayService"></p>
             </div>
             <div class="info-item">
               <h2>Type of Product you sell</h2>
-              <p></p>
+              <p class="displayProduct"></p>
             </div>
             <div class="info-item">
               <h2>Budget</h2>
-              <p></p>
+              <p class="displayBudget"></p>
             </div>
             <div class="info-item">
               <h2>Message</h2>
-              <p></p>
+              <p class="displayMessage"></p>
             </div>
           </div>
         </div>
       </div>
     </header>
 
+    <!-- modal that contains the contact form - appears only by clicking link in navbar -->
     <div class="modal hidden" style="border-radius: 2rem">
+
+      <!-- cross symbol to close the modal -->
       <button class="btn--close-modal">&times;</button>
+
+      <!-- heading of modal -->
       <h2 class="modal__header">Contact Us</h2>
+
+      <!-- Main form taking personal information -->
       <form id="personal-info-form" class="modal_form" method="POST">
+
+        <!-- Name input with full width -->
         <div class="form-item">
           <label for="name">FULL NAME <span class="required">*</span></label>
           <input
             type="text"
-            id="name"
             id="name"
             name="name"
             placeholder="Enter Your Name"
             required
           />
         </div>
+        <!-- <p class="warning-full">Name should not be empty!</p> -->
+      
 
+        <!-- div for 2 columns that will contain 2 input field in same row -->
         <div class="column-2">
+
+          <!-- Email field -->
           <div class="form-item">
             <label for="email">EMAIL<span class="required">*</span></label>
             <input
               type="email"
               id="email"
-              id="email"
               placeholder="Enter Your Email"
               required
             />
           </div>
+
+          <!-- Phone number -->
           <div class="form-item" style="margin-right: -10px">
             <label for="phone">PHONE</label>
             <input
               type="tel"
-              id="phone"
               id="phone"
               placeholder="Enter Phone Number"
               required
             />
           </div>
         </div>
+
+        <!-- Service options -->
         <div class="form-item">
           <label for="service"
             >NEEDED SERVICE<span class="required">*</span></label
           >
-          <select id="service" class="selectField" name="service">
+          <select id="service" class="selectService" name="service" onchange="getService(this)" >
             <option selected>Please Choose</option>
             <option value="eCommerce Business">eCommerce Business</option>
             <option value="UI/UX Design">UI/UX Design</option>
@@ -115,7 +133,8 @@
           </select>
         </div>
 
-        <div class="productRow">
+        <!-- Product type RADIO buttons !(Only shown when service option is selected) -->
+        <div class="productRow hidden">
           <label for="product" class="labelTitle"
             >WHAT TYPE OF PRODUCT DO YOU SELL?</label
           >
@@ -148,8 +167,10 @@
           </div>
         </div>
 
-        <div class="budgetRow">
+        <!-- Budget Range slider !(Only shown when service option is selected) -->
+        <div class="budgetRow hidden">
           <label for="budget" class="labelTitle">BUDGET</label>
+          <h3 class="budget-value">$1500 - $<span class="changing-budget">7500</span></h3>
           <div class="slidercontainer">
             <input
               type="range"
@@ -158,24 +179,27 @@
               class="slider"
               min="1500"
               max="7500"
-            />
+              />
           </div>
         </div>
 
+        <!-- Message input box -->
         <div class="form-item">
           <label for="email">MESSAGE<span class="required">*</span></label>
           <textarea
             type="text"
-            id="message"
             id="message"
             placeholder="Your message here..."
             required
           ></textarea>
         </div>
 
-        <button type="submit" class="btn">Submit</button>
+        <!-- submit button -->
+        <button type="button" class="submit-btn">Submit</button>
       </form>
     </div>
+
+    <!-- Black Blurry part that shows behind the modal -->
     <div class="overlay hidden"></div>
   </body>
 

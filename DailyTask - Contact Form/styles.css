@@ -9,6 +9,7 @@
   --grey-text-dark: #222;
   --grey-text-medium: #333;
   --grey-text-light: #666;
+  --btn-bg: #212529;
 }
 
 * {
@@ -39,7 +40,7 @@ body {
   align-items: center;
 }
 
-/* NAVIGATION */
+/* NAVIGATION BAR*/
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -69,10 +70,12 @@ body {
   padding: 0.8rem;
 }
 
+/* apply hover style on navbar link except the login button */
 .navbar_item:hover:not(:last-child) {
   background-color: #3333331b;
   padding: 0.8rem;
   border-radius: 1.5rem;
+  color: var(--color-primary-darker);
 }
 
 .navbar_link:link,
@@ -101,6 +104,8 @@ body {
   color: var(--offwhite);
 }
 
+/* Main container that holds the information div */
+
 .main-container {
   margin-top: 14rem;
   width: 80%;
@@ -123,6 +128,8 @@ body {
   color: #495057;
 }
 
+/* body of information retrived from contact form */
+
 .personal-info-body {
   margin: 2rem 8rem 10rem;
   background-color: white;
@@ -131,6 +138,7 @@ body {
   padding: 0.5rem;
 }
 
+/* individual ROW item of info. */
 .info-item {
   display: flex;
   justify-content: space-between;
@@ -161,12 +169,9 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
-.hiddenx {
-  display: none;
-}
 
 /* MODAL WINDOW */
 .modal {
@@ -178,13 +183,17 @@ body {
   width: 70rem;
   background-color: var(--white);
   padding: 2rem 3rem;
-  margin-top: 2rem;
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 1000;
-  transition: all 0.5s;
+  transition: all 0.8s;
+  
+  /* Hides the overflow and enables vertical scrolling */
+  max-height: calc(100vh - 100px);
   overflow: hidden;
+  overflow-y: auto;
 }
 
+/* Black blurry part behind the modal */
 .overlay {
   position: fixed;
   top: 0;
@@ -226,7 +235,8 @@ body {
   color: red;
 }
 
-.selectField {
+/* Select input field style */
+.selectService {
   padding: 1rem 0;
   border-radius: 0.5rem;
   background-color: var(--offwhite);
@@ -237,11 +247,12 @@ body {
   font-weight: 500;
 }
 
-.selectField:focus {
+.selectService:focus {
   border: none;
   outline: none;
 }
 
+/* form item taking full width, like Full name, needed service & message*/
 .form-item {
   display: flex;
   flex-direction: column;
@@ -253,6 +264,7 @@ body {
   width: 100%;
 }
 
+/* form item taking half space, like email & phone number */
 .column-2 {
   display: flex;
   align-items: flex-start;
@@ -285,6 +297,14 @@ label {
   line-height: 20px;
 }
 
+.warning-full{
+  color: red;
+  margin: -.7rem 0 0 2.5rem;
+}
+
+
+/* Product row having radio button styles */
+
 .productRow {
   display: flex;
   flex-direction: column;
@@ -304,11 +324,59 @@ label {
   display: flex;
   font-size: 1.3em;
   font-weight: 500;
+  align-items: center;
 }
 
 .radio-container label {
   margin-left: 0.9rem;
 }
+
+/* Radio customization from online reference */
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: var(--color-secondary-darker);
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid var(--color-secondary-darker);
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-secondary);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 0.15em) solid var(--color-secondary-darker);
+  outline-offset: max(2px, 0.15em);
+}
+
+/* Budget row having range input field */
 
 .budgetRow {
   display: flex;
@@ -317,10 +385,15 @@ label {
   margin-left: 3rem;
 }
 
-.slidecontainer {
+.slidercontainer {
   width: 100%;
-  padding: 0.5rem;
 }
+
+.budget-value{
+  font-size: 1.5em;
+}
+
+/* ! Slider styles are from online reference */
 
 .slider {
   -webkit-appearance: none;
@@ -355,4 +428,70 @@ label {
   border-radius: 50%;
   background: #04aa6d;
   cursor: pointer;
+}
+
+/* Submit button styles */
+
+.submit-btn{
+  padding: .8rem 0;
+  margin: 1.5rem;
+  margin-right: -.1rem;
+  background-color: var(--btn-bg);
+  color: var(--white);
+  border-radius: 2rem;
+  border: none;
+  font-weight: 600;
+  position: relative;
+  transition:all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.submit-btn:hover{
+  background-color: #01AA5E;
+}
+
+.submit-btn:after{
+  content:'→';
+  font-size: 2em;
+  color:var(--white);
+  position:absolute;
+  bottom: 7px;
+  right : 310px;
+  transition:all .3s ease-in-out;
+}
+
+button:hover:after{
+  right: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Scroll bar Modification to make it look good : "This is a reference from the website" not written by me! */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black; 
 }
