@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Contact Page</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <img src="src/logo-new.png" alt="logo" class="navbar_logo" id="logo" />
+        <ul class="navbar_links">
+          <li class="navbar_item">
+            <a class="navbar_link btn--show-modal" href="#">Contact Us</a>
+          </li>
+          <li class="navbar_item">
+            <a class="navbar_link" href="#">About Us</a>
+          </li>
+          <li class="navbar_item">
+            <a class="navbar_link navbar_link--btn" href="#">Login</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="main-container">
+        <div class="personal-info">
+          <div class="container-header">
+            <h3 class="container-title">Personal Information</h3>
+          </div>
+
+          <div class="personal-info-body">
+            <div class="info-item">
+              <h2>Full Name</h2>
+              <p>ade</p>
+            </div>
+            <div class="info-item">
+              <h2>Email</h2>
+              <p></p>
+            </div>
+            <div class="info-item">
+              <h2>Phone</h2>
+              <p></p>
+            </div>
+            <div class="info-item">
+              <h2>Needed Service</h2>
+              <p></p>
+            </div>
+            <div class="info-item">
+              <h2>Type of Product you sell</h2>
+              <p></p>
+            </div>
+            <div class="info-item">
+              <h2>Budget</h2>
+              <p></p>
+            </div>
+            <div class="info-item">
+              <h2>Message</h2>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="modal hidden" style="border-radius: 2rem">
+      <button class="btn--close-modal">&times;</button>
+      <h2 class="modal__header">Contact Us</h2>
+      <form id="personal-info-form" class="modal_form" method="POST">
+        <div class="form-item">
+          <label for="name">FULL NAME <span class="required">*</span></label>
+          <input
+            type="text"
+            id="name"
+            id="name"
+            name="name"
+            placeholder="Enter Your Name"
+            required
+          />
+        </div>
+
+        <div class="column-2">
+          <div class="form-item">
+            <label for="email">EMAIL<span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              id="email"
+              placeholder="Enter Your Email"
+              required
+            />
+          </div>
+          <div class="form-item" style="margin-right: -10px">
+            <label for="phone">PHONE</label>
+            <input
+              type="tel"
+              id="phone"
+              id="phone"
+              placeholder="Enter Phone Number"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-item">
+          <label for="service"
+            >NEEDED SERVICE<span class="required">*</span></label
+          >
+          <select id="service" class="selectField" name="service">
+            <option selected>Please Choose</option>
+            <option value="eCommerce Business">eCommerce Business</option>
+            <option value="UI/UX Design">UI/UX Design</option>
+            <option value="Online Service">Online Service</option>
+          </select>
+        </div>
+
+        <div class="productRow">
+          <label for="product" class="labelTitle"
+            >WHAT TYPE OF PRODUCT DO YOU SELL?</label
+          >
+          <div class="radio-container">
+            <input
+              type="radio"
+              id="physical"
+              name="product"
+              value="Physical Products"
+            />
+            <label for="physical">Physical Products</label><br />
+          </div>
+          <div class="radio-container">
+            <input
+              type="radio"
+              id="digital"
+              name="product"
+              value="Digital Products"
+            />
+            <label for="digital">Digital Products</label><br />
+          </div>
+          <div class="radio-container">
+            <input
+              type="radio"
+              id="consulting"
+              name="product"
+              value="Service Consulting"
+            />
+            <label for="consulting">Service Consulting</label>
+          </div>
+        </div>
+
+        <div class="budgetRow">
+          <label for="budget" class="labelTitle">BUDGET</label>
+          <div class="slidercontainer">
+            <input
+              type="range"
+              id="budget"
+              name="budget"
+              class="slider"
+              min="1500"
+              max="7500"
+            />
+          </div>
+        </div>
+
+        <div class="form-item">
+          <label for="email">MESSAGE<span class="required">*</span></label>
+          <textarea
+            type="text"
+            id="message"
+            id="message"
+            placeholder="Your message here..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+  </body>
+
+  <script src="script.js"></script>
+</html>
