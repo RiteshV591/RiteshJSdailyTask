@@ -78,6 +78,8 @@ budgetRangeInput.addEventListener("input", function(e){
 
 
 //getting all the lables to show the stored value
+
+
 const submitBtn = document.querySelector('.submit-btn');
 const fullName = document.querySelector('.displayName')
 const email = document.querySelector('.displayEmail')
@@ -87,18 +89,88 @@ const product = document.querySelector('.displayProduct')
 const budget = document.querySelector('.displayBudget')
 const message = document.querySelector('.displayMessage')
 
-
 // setting click listner to submit button to store the values entered by user and close the modal
 
-submitBtn.addEventListener('click', function() {
+submitBtn.addEventListener('click', function(e) {
   
-  fullName.innerHTML = document.querySelector('#name').value;
-  email.innerHTML = document.querySelector('#email').value;
-  phone.innerHTML = document.querySelector('#phone').value;
-  service.innerHTML = document.querySelector('#service').value;
-  product.innerHTML = document.querySelector('input[name="product"]:checked').value; 
-  budget.innerHTML = document.querySelector('.budget-value').textContent;
-  message.innerHTML = document.querySelector('#message').value;
-  closeModal();
+  e.preventDefault();
+
+  // show values to display and close the modal only when all the inputs are valid
+  if (validateName() && validateEmail() && validateMessage()) {
+
+    fullName.innerHTML = document.querySelector('#name').value;
+    email.innerHTML = document.querySelector('#email').value;
+    phone.innerHTML = document.querySelector('#phone').value;
+    service.innerHTML = document.querySelector('#service').value;
+    budget.innerHTML = document.querySelector('.budget-value').textContent;
+    message.innerHTML = document.querySelector('#message').value;
+    
+    // was getting error of "null value" that's why checking first
+    const productInput = document.querySelector('input[name="product"]:checked');
+    if(productInput){
+      product.innerHTML = productInput.value;
+    }
+    closeModal();
+  }
 
 });
+
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const serviceError = document.getElementById('serviceError');
+const messageError = document.getElementById('messageError');
+
+// calling this function when any input given to input box using "onKeyUp()"
+function validateName(){
+  const name = document.querySelector('#name').value;
+
+  // cheking if given input is empty
+  if(name.length == 0){
+    nameError.innerHTML = 'Name is Required!';
+    nameError.classList.add('error');
+    // nameError.classList.remove('valid');
+    return false;
+  } 
+  nameError.innerHTML = 'valid';
+  nameError.classList.add('valid');
+  return true;
+}
+
+// calling this function when any input given to input box using "onKeyUp()"
+function validateEmail(){
+  var email = document.querySelector('#email').value;
+
+  // cheking if given input is empty
+  if(email.length == 0) {
+    emailError.innerHTML = 'Email is required'
+    return false;
+  }
+
+  //checking if regex matches the input value
+  if(!email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)){
+    emailError.innerHTML = 'Email Invalid'
+    nameError.classList.add('error');
+    nameError.classList.remove('valid');
+    return false;
+  }
+  emailError.innerHTML = 'valid';
+  emailError.classList.add('valid');
+  return true;
+}
+
+// calling this function when any input given to input box using "onKeyUp()"
+function validateMessage(){
+  var message = document.querySelector('#message').value;
+  
+  // cheking if given input is empty
+  if(message.length == 0){
+    messageError.innerHTML = 'Message is Required!';
+    nameError.classList.add('error');
+    nameError.classList.remove('valid');
+    return false;
+  } 
+
+  messageError.innerHTML = 'valid';
+  messageError.classList.add('valid');
+  return true;
+}

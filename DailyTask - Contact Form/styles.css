@@ -464,13 +464,19 @@ button:hover:after{
   right: 300px;
 }
 
+small{
+  font-size: 1.2rem;
+  position: relative;
+  top: 10px;
+}
 
+.error{
+  color: red;
+}
 
-
-
-
-
-
+.valid{
+  color: green;
+}
 
 
 /* Scroll bar Modification to make it look good : "This is a reference from the website" not written by me! */

@@ -78,7 +78,7 @@
       <h2 class="modal__header">Contact Us</h2>
 
       <!-- Main form taking personal information -->
-      <form id="personal-info-form" class="modal_form" method="POST">
+      <form id="personal-info-form" class="modal_form" method="POST" >
 
         <!-- Name input with full width -->
         <div class="form-item">
@@ -88,10 +88,11 @@
             id="name"
             name="name"
             placeholder="Enter Your Name"
-            required
+            required="required"
+            onkeyup="validateName()"
           />
+          <small class="error" id="nameError"></small>
         </div>
-        <!-- <p class="warning-full">Name should not be empty!</p> -->
       
 
         <!-- div for 2 columns that will contain 2 input field in same row -->
@@ -105,7 +106,9 @@
               id="email"
               placeholder="Enter Your Email"
               required
+              onkeyup="validateEmail()"
             />
+            <small class="error" id="emailError"></small>
           </div>
 
           <!-- Phone number -->
@@ -117,6 +120,7 @@
               placeholder="Enter Phone Number"
               required
             />
+            
           </div>
         </div>
 
@@ -125,12 +129,13 @@
           <label for="service"
             >NEEDED SERVICE<span class="required">*</span></label
           >
-          <select id="service" class="selectService" name="service" onchange="getService(this)" >
-            <option selected>Please Choose</option>
+          <select id="service" class="selectService required" name="service" onchange="getService(this)" >
+            <option selected value="">Please Choose</option>
             <option value="eCommerce Business">eCommerce Business</option>
             <option value="UI/UX Design">UI/UX Design</option>
             <option value="Online Service">Online Service</option>
           </select>
+          <small class="error" id="serviceError"></small>
         </div>
 
         <!-- Product type RADIO buttons !(Only shown when service option is selected) -->
@@ -144,6 +149,7 @@
               id="physical"
               name="product"
               value="Physical Products"
+              checked
             />
             <label for="physical">Physical Products</label><br />
           </div>
@@ -165,6 +171,7 @@
             />
             <label for="consulting">Service Consulting</label>
           </div>
+          
         </div>
 
         <!-- Budget Range slider !(Only shown when service option is selected) -->
@@ -179,6 +186,7 @@
               class="slider"
               min="1500"
               max="7500"
+              required
               />
           </div>
         </div>
@@ -191,11 +199,13 @@
             id="message"
             placeholder="Your message here..."
             required
+            onkeyup="validateMessage()"
           ></textarea>
+          <small class="error" id="messageError"></small>
         </div>
 
         <!-- submit button -->
-        <button type="button" class="submit-btn">Submit</button>
+        <button type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
 
